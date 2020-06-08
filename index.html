@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <!-- 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <div class="sound">Shake</div>
+    </div>
+
+
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <div class="sound">Snare</div>
+    </div>
+
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <div class="sound">Kick</div>
+    </div>
+  </div>
+
+  <audio data-key="65" src="50CentShaker.wav"></audio>
+  <audio data-key="68" src="50CentSnare.wav"></audio>
+  <audio data-key="71" src="50CentKick.wav"></audio>
+
+
+  <script>
+    playSound = (e) => {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+      if (!audio) return; // this will stop the fn
+      audio.currentTime = 0; // sets audio sample back to 0s
+      audio.play();
+      key.classList.add('playing');
+      
+      return;
+    }
+
+    removeTransition = (e) => {
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      if (!key) return;
+      key.classList.remove('playing');
+    }
+
+    window.addEventListener('keydown', playSound);
+    // const keys = document.querySelectorAll('.key');
+    window.addEventListener('keyup', removeTransition);
+  </script>
+
+</body>
+
+</html>

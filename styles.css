@@ -1,0 +1,28 @@
+.body {
+  display: flex;
+}
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 20vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.key {
+  height: 65px;
+  width: 75px;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 1px;
+  text-align: center;
+  border: 1px solid black;
+  box-shadow: 6px 6px blueviolet;
+  transition: all 0.7 ease;
+}
+
+.playing {
+  transform: scale(1.1);
+  box-shadow: 6px 6px #e60073;
+
+}
